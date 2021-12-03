@@ -5,7 +5,54 @@
     <link rel="stylesheet" href="css/nav.css" />
   </head>
   <body>
-    <header class="header">COVID-19</header>
+    <audio
+      id="audio"
+      src="media/Ariana Grande - Snow In California.mp3"
+    ></audio>
+    <div id="msg">Ariana Grande - Snow In California</div>
+    <button id="play" onclick="control(event)">play</button>
+    <button id="pause" onclick="control(event)">pause</button>
+    <button id="replay" onclick="control(event)">replay</button>
+    <button id="vol-" onclick="control(event)">vol-</button>
+    <button id="vol+" onclick="control(event)">vol+</button>
+    <button id="mute on/off" onclick="control(event)">mute on/off</button>
+    <script>
+      var div = document.getElementById("msg");
+      var audio = document.getElementById("audio");
+      function control(e) {
+        var id = e.target.id;
+        if (id == "play") {
+          // play 버튼
+          audio.play(); // 재생
+          div.innerHTML = "Ariana Grande - Snow In California";
+        } else if (id == "pause") {
+          // pause 버튼
+          audio.pause(); // 일시 중지
+          div.innerHTML = "It's paused";
+        } else if (id == "replay") {
+          // replay 버튼
+          audio.load(); // src에 지정된 미디어 다시 로딩
+          audio.play(); // 처음부터 다시 재생
+          div.innerHTML = "Ariana Grande - Snow In California";
+        } else if (id == "vol-") {
+          // vol- 버튼
+          audio.volume -= 0.1; // 음량 0.1 감소
+          if (audio.volume < 0.1) audio.volume = 0;
+          div.innerHTML = "volume -0.1" + "current volume: " + audio.volume;
+        } else if (id == "vol+") {
+          // vol+ 버튼
+          audio.volume += 0.1; // 음량 0.1 증가
+          if (audio.volume > 0.9) audio.volume = 1.0;
+          div.innerHTML = "volume +0.1" + "current volume: " + audio.volume;
+        } else if (id == "mute on/off") {
+          // mute on/off 버튼
+          audio.muted = !audio.muted; // 음소거 토글
+          if (audio.muted) div.innerHTML = "muted";
+          else div.innerHTML = "muted off";
+        }
+      }
+    </script>
+    <header class="header"><a href="index.html">COVID-19</a></header>
     <nav class="nav" , id="menubar">
       <ul>
         <li><a href="covid_symptom.html">코로나 증상</a></li>

@@ -24,6 +24,11 @@
   color: violet; /* 마우스 올라 갈 때 색 */
 }
 
+button {
+  background-color: white;
+  color: black;
+}
+
 html,
 body {
   margin: 0;
